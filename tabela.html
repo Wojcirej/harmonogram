@@ -1,0 +1,21 @@
+<table id="main_table" class="table table-striped table-hover" ng-model="plany">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Poniedziałek</th>
+      <th>Wtorek</th>
+      <th>Środa</th>
+      <th>Czwartek</th>
+      <th>Piątek</th>
+      <th>Sobota</th>
+      <th>Niedziela</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="yy in y">
+      <td><b>{{yy+8}}:00</b></td>
+      <td ng-repeat="xx in x">
+      </td>
+    </tr>
+  </tbody>
+</table>
