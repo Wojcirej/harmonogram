@@ -3,11 +3,27 @@
   <meta charset="utf-8" />
   <title>Harmonogram zajęć</title>
   <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
   <script type="text/javascript" src="/js/angular.min.js"></script>
   <script type="text/javascript" src="/js/ang.js"></script>
 </head>
 <body ng-controller="harmonogramCtrl">
-  <p>Witaj, {{zmienna || 'gość'}}!</p>
-  <input type="text" ng-model="zmienna">
+  <div id="wrapper">
+		<header id="header">
+			<img src="/images/header.jpeg" alt=""/>
+    </header>
+    <aside id="side">
+      <nav>
+      </nav>
+    </aside>
+    <section id="content">
+      <p>Witaj, {{zmienna || 'gość'}}!</p>
+      <input type="text" ng-model="zmienna">
+    </section>
+    <div id="clear"></div>
+		<footer id="footer">
+			<p>Copyright &copy; 2017. Wszelkie prawa zastrzeżone.</p>
+		</footer>
+  </div>
 </body>
 </html>
