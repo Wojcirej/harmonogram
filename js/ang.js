@@ -2,6 +2,8 @@ angular.module('harmonogram', ['ngRoute'])
 .controller('harmonogramCtrl', function($scope){
   $scope.y = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   $scope.x = [0, 1, 2, 3, 4, 5, 6, 7];
+  $scope.instytut = 0;
+  $scope.zaklad = 0;
   $scope.instytuty = [
     {index:0,title:' '},
     {index:1,title:'Instytut Gospodarki i Polityki Społecznej'},
@@ -28,6 +30,23 @@ angular.module('harmonogram', ['ngRoute'])
     {z:15,i:4,title:'Zakład Mechaniki i Budowy Maszyn'},
     {z:16,i:4,title:'Zakład Zarządzania'},
   ];
+  $scope.wybierzInstytut = function(index) {
+    $scope.instytut = index;
+  }
+  $scope.wybierzZaklad = function(index) {
+    $scope.zaklad = index;
+  }
+  $scope.reset = function() {
+    $scope.zaklad = 0;
+    $scope.instytut = 0;
+  }
+  $scope.pobierzNazweZakladu = function(index) {
+    for(var i = 0; i < $scope.zaklady.length; ++i) {
+      if($scope.zaklady[i].z == index) {
+        return $scope.zaklady[i].title;
+      }
+    }
+  }
 })
 .config(function($routeProvider, $locationProvider){
   $routeProvider.when('/', {
@@ -40,5 +59,6 @@ angular.module('harmonogram', ['ngRoute'])
   }).
   otherwise({
     redirectTo: '/'
-  })
+  });
+  $locationProvider.html5Mode(true);
 })
