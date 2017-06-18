@@ -15,7 +15,7 @@
     <tr ng-repeat="yy in y">
       <td><b>{{yy+8}}:00</b></td>
       <td ng-repeat="xx in x">
-        plany
+        {{ wstawPlan(x.indexOf(xx), y.indexOf(yy), zaklad) }}
       </td>
     </tr>
   </tbody>

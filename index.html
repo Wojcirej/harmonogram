@@ -17,54 +17,40 @@
       <img src="/images/header.jpeg" alt=""/>
       <h2><p align="center" ng-show="zaklad == 0">Nie wybrano planu zajęć</p></h2>
       <h2><p align="center" ng-show="zaklad != 0">Plan zajęć dla {{pobierzNazweZakladu(zaklad)}}
-    </header>
-    <aside id="side">
-      <nav>
-        <div id="leftBar">
-          <ul id="menu">
-            <li>
-              <a data-toggle="collapse" data-parent="#leftBar" href="#instytuty">Wybierz instytut</a>
-              <div id="instytuty" class="panel-collapse collapse out">
-                <input type="radio" ng-click="wybierzInstytut(1)">Instytut Gospodarki i Polityki Społecznej<br>
-                <input type="radio" ng-click="wybierzInstytut(2)">Instytut Humanistyczny<br>
-                <input type="radio" ng-click="wybierzInstytut(3)">Instytut Kultury Fizycznej<br>
-                <input type="radio" ng-click="wybierzInstytut(4)">Instytut Politechniczny<br>
-              </div>
-            </li>
-            <li ng-show="instytut != 0">
-              <a data-toggle="collapse" data-parent="#leftBar" href="#zaklady">Wybierz zakład</a>
-              <div id="zaklady" class="panel-collapse collapse out">
-                <span ng-show="instytut == 1"><input type="radio" ng-click="wybierzZaklad(1)">Zakład Pielęgniarstwa<br></span>
-                <span ng-show="instytut == 1"><input type="radio" ng-click="wybierzZaklad(2)">Zakład Rolnictwa i Rozwoju Obszarów Wiejskich<br></span>
-                <span ng-show="instytut == 1"><input type="radio" ng-click="wybierzZaklad(3)">Zakład Towaroznawstwa<br></span>
-                <span ng-show="instytut == 2"><input type="radio" ng-click="wybierzZaklad(4)">Zakład Filologii Angielskiej<br></span>
-                <span ng-show="instytut == 2"><input type="radio" ng-click="wybierzZaklad(5)">Zakład Filologii Germańskiej<br></span>
-                <span ng-show="instytut == 2"><input type="radio" ng-click="wybierzZaklad(6)">Zakład Filologii Rosyjskiej<br></span>
-                <span ng-show="instytut == 2"><input type="radio" ng-click="wybierzZaklad(7)">Zakład Pedagogiki<br></span>
-                <span ng-show="instytut == 2"><input type="radio" ng-click="wybierzZaklad(8)">Zakład Polonistyki<br></span>
-                <span ng-show="instytut == 3"><input type="radio" ng-click="wybierzZaklad(9)">Zakład Turystyki i Rekreacji<br></span>
-                <span ng-show="instytut == 3"><input type="radio" ng-click="wybierzZaklad(10)">Zakład Wychowania Fizycznego<br></span>
-                <span ng-show="instytut == 4"><input type="radio" ng-click="wybierzZaklad(11)">Zakład Budownictwa<br></span>
-                <span ng-show="instytut == 4"><input type="radio" ng-click="wybierzZaklad(12)">Zakład Energetyki<br></span>
-                <span ng-show="instytut == 4"><input type="radio" ng-click="wybierzZaklad(13)">Zakład Informatyki<br></span>
-                <span ng-show="instytut == 4"><input type="radio" ng-click="wybierzZaklad(14)">Zakład Inżynierii Środowiska<br></span>
-                <span ng-show="instytut == 4"><input type="radio" ng-click="wybierzZaklad(15)">Zakład Mechaniki i Budowy Maszyn<br></span>
-                <span ng-show="instytut == 4"><input type="radio" ng-click="wybierzZaklad(16)">Zakład Zarządzania<br></span>
-            </li>
-            <li>
-              <a href="" ng-click="reset()">Wyczyść tabelę</a>
-          </ul>
+      </header>
+      <aside id="side">
+        <nav>
+          <div class="btn-group">
+            <button class="btn btn-default">
+              <span class="dropdown-toggle" data-toggle="dropdown">Wybierz instytut</span>
+              <ul class="dropdown-menu">
+                <li ng-repeat="i in instytuty">
+                  <a style="none" ng-click="wybierzInstytut(i.index)">{{i.title}}</a>
+                </li>
+              </ul>
+            </button>
+            <button class="btn btn-default">
+              <span class="dropdown-toggle" data-toggle="dropdown">Wybierz zakład</span>
+              <ul class="dropdown-menu">
+                <li ng-repeat="zd in zaklady">
+                  <a style="none" ng-click="wybierzZaklad(zd.z)" ng-show="zd.i == pobierzInstytut()" ng-href="/plan/{{zd.z}}">{{zd.title}}</a>
+                </li>
+              </ul>
+            </button>
+          </div>
+          <button class="btn btn-default">
+            <span ng-click="reset()">Wyczyść tabelę</span>
+          </button>
+        </nav>
+      </aside>
+      <section id="content">
+        <div ng-view>
         </div>
-      </nav>
-    </aside>
-    <section id="content">
-      <div ng-view>
-      </div>
-    </section>
-    <div id="clear"></div>
-    <footer id="footer">
-      <p>Copyright &copy; 2017. Wszelkie prawa zastrzeżone.</p>
-    </footer>
-  </div>
-</body>
-</html>
+      </section>
+      <div id="clear"></div>
+      <footer id="footer">
+        <p>Copyright &copy; 2017. Wszelkie prawa zastrzeżone.</p>
+      </footer>
+    </div>
+  </body>
+  </html>
